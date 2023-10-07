@@ -8,27 +8,24 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/v1")
 public class ProcessingController {
-    //read csv
-    @PostMapping("/csv")
-    public ResponseEntity<?> leercsv(@RequestBody Map<String, String> request) {
+    @PostMapping("/read")
+    public ResponseEntity<?> Read(@RequestBody Map<String, String> request) {
         try {
             String pathfile = request.get("pathfile");
-            ProcessingService.procesarCVS(pathfile);
+            String fileType = request.get("tipo");
+
+            if ("csv".equalsIgnoreCase(fileType)) {
+                ProcessingService.LeerCSV(pathfile);
+            } else if ("xlsx".equalsIgnoreCase(fileType)) {
+                MultipartFile xlsxFile = ProcessingService.obtenerArchivoXLSX(pathfile);
+                ProcessingService.LeerXLSX(xlsxFile);
+            } else {
+                return ResponseEntity.badRequest().body("Error: Tipo de archivo no admitido");
+            }
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
     }
 
-    @PostMapping("/xlsx")
-    public ResponseEntity<?> leerxlsx(@RequestBody Map<String, String> request) {
-        try {
-            String pathfile = request.get("pathfile");
-            MultipartFile xlsxFile = ProcessingService.obtenerArchivoXLSX(pathfile);
-            ProcessingService.procesarXLSX(xlsxFile);
-            return ResponseEntity.ok().build();
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
-        }
-    }
 }
