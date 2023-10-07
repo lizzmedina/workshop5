@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ProcessingService {
-    public static void procesarCVS(String pathfile) {
+    public static void LeerCSV(String pathfile) {
         try (Reader reader = new FileReader(pathfile);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT)) {
             for (CSVRecord record : csvParser) {
@@ -26,7 +26,7 @@ public class ProcessingService {
         }
     }
 
-    public static void procesarXLSX(MultipartFile pathfile) {
+    public static void LeerXLSX(MultipartFile pathfile) {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(pathfile.getInputStream());
             XSSFSheet sheet = workbook.getSheetAt(0);
