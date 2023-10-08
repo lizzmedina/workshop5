@@ -1,3 +1,0 @@
-/*
-texto random to test
-* */
