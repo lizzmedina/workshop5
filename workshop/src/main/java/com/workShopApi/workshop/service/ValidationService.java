@@ -3,14 +3,17 @@ package com.workShopApi.workshop.service;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class ValidationService {
 
     public boolean validateLine(String line) {
-        // Lógica para validar una línea según las reglas
         String[] parts = line.split(",");
         if (parts.length != 3) {
-            return false; // La línea debe tener tres campos (email, date of birth, job title)
+            return false;
         }
 
         String email = parts[0];
@@ -35,7 +38,7 @@ public class ValidationService {
             return false;
         }
 
-        return true; // La línea es válida si pasa todas las reglas
+        return true;
     }
 }
 

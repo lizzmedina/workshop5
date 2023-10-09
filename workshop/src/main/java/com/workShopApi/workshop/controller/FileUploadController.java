@@ -1,11 +1,13 @@
 package com.workShopApi.workshop.controller;
 
-
-import com.workShopApi.workshop.modeldto.ValidationResult;
 import com.workShopApi.workshop.service.FileProcessingService;
+import com.workShopApi.workshop.util.CsvUtil;
+import com.workShopApi.workshop.util.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/files")
@@ -15,8 +17,28 @@ public class FileUploadController {
     private FileProcessingService fileProcessingService;
 
     @PostMapping("/upload")
-    public ValidationResult uploadFile(@RequestParam("file") MultipartFile file) {
-        // Aquí procesarás el archivo y enviarás registros al servicio de validación
-        return fileProcessingService.processFile(file);
+    public String uploadFile(@RequestBody Map<String, String> request) {
+        try {
+            String pathfile = request.get("pathfile");
+            String fileType = request.get("tipo");
+
+            if (pathfile == null || pathfile.isEmpty()) {
+              return "Error: File path is required";
+            }
+
+            if ("csv".equalsIgnoreCase(fileType)) {
+                CsvUtil.leerCSV(pathfile);
+            } else if ("xlsx".equalsIgnoreCase(fileType)) {
+                MultipartFile xlsxFile = ExcelUtil.obtenerArchivoXLSX(pathfile);
+                ExcelUtil.leerXLSX(xlsxFile);
+            } else {
+                return "Error: Unsupported file type";
+            }
+
+            return "File processed successfully";
+        } catch (IllegalArgumentException e) {
+            return ("Error: " + e.getMessage());
+        }
     }
 }
+

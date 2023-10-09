@@ -1,4 +1,4 @@
-package com.workShopApi.workshop.util;
+package com.workShopApi.workshop.modeldto;
 
 public class DataSafety {
 
