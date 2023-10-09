@@ -4,10 +4,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ValidationService {
-    public void  validateCvs(Persona persona) {
+    public void  validateCvs(String persona) { // debe llevar Persona en vez de String
 
     }
-    public void  validateExc(Persona persona) {
+    public void  validateExc(String persona) {// debe llevar Persona en vez de String
 
     }
 }

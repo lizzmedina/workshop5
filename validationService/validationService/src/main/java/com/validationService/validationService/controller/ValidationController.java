@@ -15,11 +15,13 @@ public class ValidationController {
     private ValidationService validationService;
 
     @PostMapping("/csv")
-    public Boolean validar(@RequestBody Persona persona){
-        return this.validateCvs(persona);
+    public Boolean validarCvc(){ // debe llevar @RequestBody Persona persona
+        return true;  //this.validateCvs(persona);
     }
+
+
     @PostMapping("/excel")
-    public Boolean validar(@RequestBody Persona persona){
-        return this.validateExc(persona);
+    public Boolean validarExc(){ // debe llevar @RequestBody Persona persona
+        return false; //this.validationService(persona);
     }
 }
