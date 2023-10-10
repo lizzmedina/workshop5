@@ -1,15 +1,10 @@
 package com.workShopApi.workshop.service;
-
-
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-
 @Service
 public class ValidationService {
-
     public boolean validateLine(String line) {
         String[] parts = line.split(",");
         if (parts.length != 3) {
@@ -41,4 +36,3 @@ public class ValidationService {
         return true;
     }
 }
-

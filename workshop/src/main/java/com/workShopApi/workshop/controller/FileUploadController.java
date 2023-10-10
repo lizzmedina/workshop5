@@ -6,13 +6,11 @@ import com.workShopApi.workshop.util.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/files")
 public class FileUploadController {
-
     @Autowired
     private FileProcessingService fileProcessingService;
 
@@ -36,9 +34,9 @@ public class FileUploadController {
             }
 
             return "File processed successfully";
+
         } catch (IllegalArgumentException e) {
             return ("Error: " + e.getMessage());
         }
     }
 }
-
