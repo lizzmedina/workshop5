@@ -1,5 +1,6 @@
 package com.workShopApi.workshop.util;
-
+import lombok.Data;
+@Data
 public class Persona {
         private String index;
         private String userId;
