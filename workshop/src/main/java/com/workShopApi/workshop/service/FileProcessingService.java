@@ -18,7 +18,7 @@ public class FileProcessingService {
             List<Persona> listaPersonas = CsvUtil.leerCSV(file);
             for (Persona persona : listaPersonas) {
                 //metodo que se supone debe validar | Da error pq no hemos hecho conexion ni nda
-                boolean lineaEsValida = this.validationService.validate(persona, "csv");
+                boolean lineaEsValida = this.validationService.validateLine(persona, "csv");
                 if (lineaEsValida) {
                     validCount++;
                 } else {
