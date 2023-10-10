@@ -14,14 +14,8 @@ public class ValidationController {
     @Autowired
     private ValidationService validationService;
 
-    @PostMapping("/csv")
-    public Boolean validarCvc(){ // debe llevar @RequestBody Persona persona
-        return true;  //this.validateCvs(persona);
-    }
-
-
-    @PostMapping("/excel")
-    public Boolean validarExc(){ // debe llevar @RequestBody Persona persona
-        return false; //this.validationService(persona);
+    @PostMapping("/xlsx")
+    public boolean validateXLSX(@RequestBody SafetyIncident safetyIncident) {
+        return this.xlsxValidatorService.validateXLSX(safetyIncident);
     }
 }
