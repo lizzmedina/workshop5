@@ -14,6 +14,11 @@ public class ValidationController {
     @Autowired
     private ValidationService validationService;
 
+    @PostMapping("/csv")
+    public boolean validateCSV(@RequestBody Person person) {
+            return this.csvValidatorService.validateCSV(person);
+    }
+
     @PostMapping("/xlsx")
     public boolean validateXLSX(@RequestBody SafetyIncident safetyIncident) {
         return this.xlsxValidatorService.validateXLSX(safetyIncident);
