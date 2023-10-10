@@ -1,7 +1,7 @@
 package com.workShopApi.workshop.util;
+import com.workShopApi.workshop.modeldto.Persona;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class CsvUtil {
-    public List<Persona> LeerCSV(String pathfile) {
+    public static List<Persona> leerCSV(String pathfile) {
         List<Persona> personas = new ArrayList<>();
 
         try (Reader reader = new FileReader(pathfile);

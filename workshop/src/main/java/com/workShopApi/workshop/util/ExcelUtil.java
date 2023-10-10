@@ -1,4 +1,5 @@
 package com.workShopApi.workshop.util;
+import com.workShopApi.workshop.modeldto.DataSafety;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Component
 public class ExcelUtil {
-    public List<DataSafety> LeerXLSX(MultipartFile pathfile) {
+    public static List<DataSafety> leerXLSX(MultipartFile pathfile) {
         List<DataSafety> incidentes = new ArrayList<>();
 
         try {

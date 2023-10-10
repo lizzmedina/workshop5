@@ -1,5 +1,5 @@
 package com.workShopApi.workshop.feign;
-import com.workShopApi.workshop.util.Persona;
+import com.workShopApi.workshop.modeldto.Persona;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
