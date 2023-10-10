@@ -1,5 +1,7 @@
 package com.workShopApi.workshop.service;
 
+import com.workShopApi.workshop.modeldto.Persona;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,11 +21,11 @@ public class CSVValidatorService {
         this.jobTitles.add("educational psychologist");
     }
 
-    public boolean validateCSV(Person person) {
+    public boolean validateCSV(Persona persona) {
 
-        return validateEmail(person.getEmail()) &&
-                validateDateOfBirth(person.getDateOfBirth()) &&
-                validateJobTitle(person.getJobTitle());
+        return validateEmail(persona.getEmail()) &&
+                validateDateOfBirth(persona.getDateOfBirth()) &&
+                validateJobTitle(persona.getJobTitle());
     }
 
     public boolean validateEmail(String email) {
