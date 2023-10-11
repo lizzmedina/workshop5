@@ -18,7 +18,6 @@ public class ExcelUtil {
     public static List<DataSafety> leerXLSX(MultipartFile pathfile) {
         List<DataSafety> incidentes = new ArrayList<>();
 
-
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(pathfile.getInputStream());
             XSSFSheet sheet = workbook.getSheetAt(0);
@@ -40,7 +39,6 @@ public class ExcelUtil {
                 String wkDay = row.getCell(11).getStringCellValue();
                 int month = (int) row.getCell(12).getNumericCellValue();
                 int year = (int) row.getCell(13).getNumericCellValue();
-
 
                 incidentes.add(new DataSafety(date, injuryLocation, gender, ageGroup, incidentType,
                         daysLost, plant, reportType, shift, department, incidentCost, wkDay, month, year));
@@ -67,6 +65,3 @@ public class ExcelUtil {
         }
     }
 }
-
-
-

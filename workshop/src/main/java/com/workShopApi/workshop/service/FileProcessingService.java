@@ -1,27 +1,34 @@
 package com.workShopApi.workshop.service;
-
-
-
-import com.workShopApi.workshop.modeldto.ValidationResult;
+import com.workShopApi.workshop.feign.FeignUtil;
+import com.workShopApi.workshop.modeldto.Persona;
+import com.workShopApi.workshop.util.CsvUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
 
 @Service
 public class FileProcessingService {
-
     @Autowired
-    private ValidationService validationService;
+    private FeignUtil feignUtil;
 
-    public ValidationResult processFile(MultipartFile file) {
-        // Lógica para procesar el archivo
-        // Leer línea por línea
-        // Enviar peticiones HTTP al servicio de validación con cada línea
-        // Registrar el número de líneas válidas e inválidas
-        return validationResult;
+    public String processFile(String file) {
+        int invalidCount = 0, validCount = 0;
+        try {
+            List<Persona> listaPersonas = CsvUtil.leerCSV(file);
+            for (Persona persona : listaPersonas) {
+                //metodo que se supone debe validar | Da error pq no hemos hecho conexion ni nda
+                boolean lineaEsValida = this.feignUtil.validateLine(persona);
+                System.out.println("linea es válida" );
+                System.out.println(lineaEsValida);
+                if (lineaEsValida) {
+                    validCount++;
+                } else {
+                    invalidCount++;
+                }
+            }
+        } catch (Exception e) {
+            return "Error processing the file: " + e.getMessage();
+        }
+        return "Lineas validas: " + validCount + " Lineas Invalidas: " + invalidCount;
     }
 }
-
-
-
-
