@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/validationService.iml" filepath="$PROJECT_DIR$/.idea/validationService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/validationService/validationService.iml" filepath="$PROJECT_DIR$/validationService/validationService.iml" />
     </modules>
   </component>
 </project>
