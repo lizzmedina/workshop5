@@ -4,13 +4,10 @@ import com.workShopApi.workshop.modeldto.Persona;
 import com.workShopApi.workshop.util.CsvUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.io.IOException;
 import java.util.List;
 
 @Service
 public class FileProcessingService {
-    @Autowired
-    private ValidationService validationService;
     @Autowired
     private FeignUtil feignUtil;
 
@@ -20,7 +17,9 @@ public class FileProcessingService {
             List<Persona> listaPersonas = CsvUtil.leerCSV(file);
             for (Persona persona : listaPersonas) {
                 //metodo que se supone debe validar | Da error pq no hemos hecho conexion ni nda
-                boolean lineaEsValida = this.validationService.validateLine( "csv");
+                boolean lineaEsValida = this.feignUtil.validateLine(persona);
+                System.out.println("linea es válida" );
+                System.out.println(lineaEsValida);
                 if (lineaEsValida) {
                     validCount++;
                 } else {
@@ -33,7 +32,3 @@ public class FileProcessingService {
         return "Lineas validas: " + validCount + " Lineas Invalidas: " + invalidCount;
     }
 }
-
-
-
-

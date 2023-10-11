@@ -20,9 +20,9 @@ public class CsvUtil {
             personas = csvParser.getRecords().stream()
                     .map(record -> new Persona(
                             record.get("Index"),
-                            record.get("UserId"),
-                            record.get("FirstName"),
-                            record.get("LastName"),
+                            record.get("User Id"),
+                            record.get("First Name"),
+                            record.get("Last Name"),
                             record.get("Sex"),
                             record.get("Email"),
                             record.get("Phone"),
