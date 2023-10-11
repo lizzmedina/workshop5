@@ -11,6 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/validar")
 public class ValidationController {
 
+    private final CSVValidatorService csvValidatorService;
+    private final XLSXValidatorService xlsxValidatorService;
+    
+    @Autowired
+    public FileValidatorController(CSVValidatorService csvValidatorService, XLSXValidatorService xlsxValidatorService) {
+        this.csvValidatorService = csvValidatorService;
+        this.xlsxValidatorService = xlsxValidatorService;
+    }
+
     @Autowired
     private ValidationService validationService;
 
