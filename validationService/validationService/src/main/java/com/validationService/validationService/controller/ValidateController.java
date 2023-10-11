@@ -15,17 +15,16 @@ public class ValidateController {
 
     @PostMapping("/cvs")
     public Boolean validarCvs(@RequestBody Map<String, String> request){
-        System.out.println("line controler" );
-        System.out.println(request );
         return this.validationService.validateLine(request.get("email"), request.get("dateOfBirth"),request.get("jobTitle"));
         //{
-        // email=alejandromassey@example.net, dateOfBirth=1917-01-08,
+        // email=alejandromassey@example.net,
+        // dateOfBirth=1917-01-08,
         // jobTitle=Engineer
         // }
     }
 
-    @PostMapping("/excel")
-    public Boolean validarExc(){ // debe llevar @RequestBody Persona persona
-        return false; //this.validationService(persona);
-    }
+//    @PostMapping("/xlsx")
+//    public boolean validateXLSX(@RequestBody Map<String, String> request) {
+//        return this.validationService.validateXLSX(request.get(""));
+//    }
 }

@@ -9,8 +9,6 @@ import java.util.List;
 @Service
 public class ValidationService {
     public boolean validateLine(String email, String dob, String jobTitle) {
-        System.out.println("llamado a validateLine");
-        System.out.println(email  + dob + jobTitle);
         // Reglas de validación para email
         if (!email.matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")) {
             return false;
